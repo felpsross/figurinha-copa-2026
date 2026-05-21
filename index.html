@@ -878,7 +878,7 @@
 
       <!-- CTA -->
       <div class="cta-wrap">
-        <a href="#" class="cta-btn" id="mainCta">
+        <a href="https://go.ironpayapp.com.br/tb7a6hcla6" class="cta-btn" id="mainCta" target="_blank" rel="noopener">
           <span class="cta-icon">⚡</span>
           COMPRAR PACK AGORA
           <span class="cta-icon">⚡</span>
@@ -1003,14 +1003,10 @@ reveals.forEach(r => obsReveal.observe(r));
 })();
 
 /* ── CTA CLICK RIPPLE ───────────────────────────── */
-document.getElementById('mainCta').addEventListener('click', function(e) {
-  e.preventDefault();
+document.getElementById('mainCta').addEventListener('click', function() {
   const btn = this;
   btn.style.transform = 'scale(.96)';
   setTimeout(() => { btn.style.transform = ''; }, 120);
-  // Put your checkout/payment link here:
-  // window.location.href = 'https://seu-link-de-pagamento.com';
-  alert('🏆 Redirecionando para o pagamento seguro...\n\n(Configure o link de pagamento no código)');
 });
 </script>
 </body>
