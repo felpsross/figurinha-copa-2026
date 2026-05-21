@@ -4,6 +4,21 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Figurinhas Copa do Mundo 2026 – Pack Completo para Imprimir</title>
+  <meta name="description" content="+900 figurinhas da Copa do Mundo 2026 para imprimir em casa. Brasil, Argentina, França, Portugal e mais de 32 seleções. Download imediato em PDF. Por apenas R$ 29,00." />
+
+  <!-- Open Graph (Facebook / Instagram Ads) -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://figurinhacopa2026.com/" />
+  <meta property="og:title"       content="Figurinhas Copa do Mundo 2026 – Pack Completo para Imprimir" />
+  <meta property="og:description" content="+900 figurinhas para imprimir em casa. Todos os craques, todas as seleções. Download imediato por R$ 29,00." />
+  <meta property="og:image"       content="https://figurinha-copa-2026.vercel.app/logo_do_produto.jpeg" />
+  <meta property="og:locale"      content="pt_BR" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="Figurinhas Copa do Mundo 2026 – Pack Completo" />
+  <meta name="twitter:description" content="+900 figurinhas para imprimir. Download imediato por R$ 29,00." />
+  <meta name="twitter:image"       content="https://figurinha-copa-2026.vercel.app/logo_do_produto.jpeg" />
   <style>
     /* ===================== RESET & BASE ===================== */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -498,15 +513,12 @@
       align-items: center;
       justify-content: center;
       gap: 1rem;
-      margin-top: 2.5rem;
+      margin: 1.8rem auto 0;
       padding: 1.2rem 2rem;
       background: rgba(0,156,59,.07);
       border: 1px solid rgba(0,156,59,.2);
       border-radius: 14px;
       max-width: 500px;
-      margin-left: auto;
-      margin-right: auto;
-      margin-top: 1.8rem;
     }
     .guarantee-icon { font-size: 2.2rem; flex-shrink: 0; }
     .guarantee-text { font-size: .85rem; color: #8090a8; line-height: 1.5; }
@@ -972,20 +984,22 @@ reveals.forEach(r => obsReveal.observe(r));
 /* ── COUNTDOWN TIMER ────────────────────────────── */
 (function() {
   const key = 'wc2026_deadline';
-  let deadline = +localStorage.getItem(key);
-  if (!deadline || deadline < Date.now()) {
-    deadline = Date.now() + 23 * 3600000 + 47 * 60000 + 33000;
-    localStorage.setItem(key, deadline);
+  function newDeadline() {
+    const d = Date.now() + 23 * 3600000 + 47 * 60000 + 33000;
+    localStorage.setItem(key, d);
+    return d;
   }
+  let deadline = +localStorage.getItem(key);
+  if (!deadline || deadline < Date.now()) deadline = newDeadline();
   function tick() {
     const diff = deadline - Date.now();
-    if (diff <= 0) { document.getElementById('th').textContent = '00'; document.getElementById('tm').textContent = '00'; document.getElementById('ts').textContent = '00'; return; }
+    if (diff <= 0) { deadline = newDeadline(); }
     const h = Math.floor(diff / 3600000);
     const m = Math.floor((diff % 3600000) / 60000);
     const s = Math.floor((diff % 60000) / 1000);
-    document.getElementById('th').textContent = String(h).padStart(2,'0');
-    document.getElementById('tm').textContent = String(m).padStart(2,'0');
-    document.getElementById('ts').textContent = String(s).padStart(2,'0');
+    document.getElementById('th').textContent = String(Math.max(h,0)).padStart(2,'0');
+    document.getElementById('tm').textContent = String(Math.max(m,0)).padStart(2,'0');
+    document.getElementById('ts').textContent = String(Math.max(s,0)).padStart(2,'0');
   }
   tick();
   setInterval(tick, 1000);
